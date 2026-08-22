@@ -12,7 +12,7 @@
 #define M_PI 3.141592653589793
 #endif
 
-inline double convertMilad(double angle) { return angle * M_PI / 500.0; }
+inline double convertMilad(double angle) { return angle * M_PI / 400.0; }
 
 inline double cosMilad(double angle) {
     double radyan = convertMilad(angle);
