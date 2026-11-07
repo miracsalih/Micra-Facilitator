@@ -1,0 +1,8 @@
+# Bunu çalıştırabilecek tek uygulama: https://github.com/miracsalih/JustBuild
+
+mode: normal
+workdir: Micra-Facilitator
+lib: sdl2
+lang: cpp
+compile
+run
