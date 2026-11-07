@@ -165,6 +165,14 @@ struct Screen {
         SDL_SetRenderDrawColor(this->renderer, r, g, b, a);
     }
 
+    inline void set_render_color(unsigned int color) {
+        Uint8 r = (color >> 16) & 0xFF;
+        Uint8 g = (color >> 8) & 0xFF;
+        Uint8 b = color & 0xFF;
+        Uint8 a = (color >> 24) & 0xFF;
+        SDL_SetRenderDrawColor(renderer, r, g, b, a);
+    }
+
     inline void present() {
         if (this->renderer) SDL_RenderPresent(this->renderer);
     }
