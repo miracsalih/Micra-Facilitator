@@ -1,5 +1,4 @@
 #include "micra_facilitator.hpp"
-#include <SDL2/SDL_events.h>
 
 int main() {
     start_sdl2(SDL_INIT_VIDEO);
