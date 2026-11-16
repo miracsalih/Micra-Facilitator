@@ -19,6 +19,7 @@
 
 #pragma once
 #include <iostream>
+#include <chrono>
 #include <SDL2/SDL.h>
 
 // ===== Key =====
@@ -234,6 +235,46 @@ struct Button {
         return mouse.right_click && in_point(mouse.x, mouse.y);
     }
 };
+
+
+// ===== Time =====
+struct Time {
+    std::chrono::time_point<std::chrono::steady_clock> son_guncelleme;
+
+    void update() {
+        this->son_guncelleme = std::chrono::steady_clock::now();
+    }
+
+    struct Data {
+        // Integer (tam sayı):
+        long int hour;
+        long int minute;
+        long int second;
+        long int millisecond;
+        long int microsecond;
+        long int nanosecond;
+
+        // Integer Gap (tam sayı):
+        long int gap;
+    };
+    
+    Data gap() {
+        std::chrono::duration a(std::chrono::steady_clock::now() - this->son_guncelleme);
+
+        return {
+            .hour        = std::chrono::duration_cast<std::chrono::hours>(a).count(),
+            .minute      = std::chrono::duration_cast<std::chrono::minutes>(a).count(),
+            .second      = std::chrono::duration_cast<std::chrono::seconds>(a).count(),
+            .millisecond = std::chrono::duration_cast<std::chrono::milliseconds>(a).count(),
+            .microsecond = std::chrono::duration_cast<std::chrono::microseconds>(a).count(),
+            .nanosecond  = std::chrono::duration_cast<std::chrono::nanoseconds>(a).count(),
+
+            .gap   = static_cast<int>(std::chrono::duration_cast<std::chrono::nanoseconds>(a).count())
+        };
+    }
+};
+
+
 
 
 
